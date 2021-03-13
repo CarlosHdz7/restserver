@@ -1,8 +1,12 @@
-const { response } = require('express')
+const { response,request } = require('express')
 
-const usuariosGet = (req, res = response) => {
+const usuariosGet = (req = request, res = response) => {
+
+    const { nombre,edad = "Sin especificar" } = req.query;
     res.json({
-        "msg":"get API - controller"
+        "msg":"get API - controller",
+        nombre,
+        edad
     })
 }
 
@@ -18,8 +22,12 @@ const usuariosPost = (req, res = response) => {
 }
 
 const usuariosPut = (req, res = response) => {
+
+    const id = req.params.id //nombre que le puse en la ruta
+
     res.json({
-        "msg":"put API - controller"
+        "msg":"put API - controller",
+        id
     })
 }
 
